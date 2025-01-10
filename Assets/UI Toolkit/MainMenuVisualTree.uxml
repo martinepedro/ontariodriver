@@ -1,0 +1,11 @@
+<ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" editor-extension-mode="False">
+    <Style src="project://database/Assets/UI%20Toolkit/main-menu-style.uss?fileID=7433441132597879392&amp;guid=4af0bb174346cc849aaedaee36fdc169&amp;type=3#main-menu-style" />
+    <ui:VisualElement name="Panel" class="panel" style="flex-grow: 1;">
+        <ui:VisualElement name="Container" class="menu-box" style="flex-grow: 1; min-width: 250px;">
+            <ui:VisualElement name="Logo" style="background-image: url(&quot;project://database/Assets/UI/Logo.png?fileID=2800000&amp;guid=666042eda3e54d04b9d53e3c6fd7cf42&amp;type=3#Logo&quot;); min-width: 150px; min-height: 101px; -unity-background-scale-mode: scale-to-fit;" />
+            <ui:Button text="Questions" name="QuestionButton" class="button" />
+            <ui:Button text="Simulator" name="SimulatorButton" class="button" />
+            <ui:Button text="Settings" parse-escape-sequences="false" name="SettingsButton" class="button" />
+        </ui:VisualElement>
+    </ui:VisualElement>
+</ui:UXML>
