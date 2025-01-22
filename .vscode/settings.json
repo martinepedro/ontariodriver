@@ -56,5 +56,5 @@
         "temp/": true,
         "Temp/": true
     },
-    "dotnet.defaultSolution": "ontariodriver.sln"
+    "dotnet.defaultSolution": "ontariodrivergit.sln"
 }
