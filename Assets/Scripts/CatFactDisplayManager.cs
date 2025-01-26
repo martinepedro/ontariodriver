@@ -16,12 +16,23 @@ public class CatFactDisplayManager : MonoBehaviour
 
   public void FetchAndDisplayCatFact()
   {
-    webRequestManager.FetchCatFact(this,
+    webRequestManager.FetchData(this,
 
-    onSuccess: (fact) =>
+    onSuccess: (rawJson) =>
     {
-      Debug.Log("Fetched Cat Fact: " + fact);
-      catFactText.text = fact;
+      Debug.Log("Raw JSON: " + rawJson);
+      GetResponse response = JsonUtility.FromJson<GetResponse>(rawJson);
+
+      if (response != null && response.fact != null)
+      {
+        Debug.Log("Fetched Cat Fact: " + response.fact);
+        catFactText.text = response.fact;
+      }
+      else
+      {
+        Debug.LogError("Error parsing cat fact from response.");
+        catFactText.text = "Failed to parse cat fact.";
+      }
     },
     onError: (error) =>
     {
@@ -29,4 +40,10 @@ public class CatFactDisplayManager : MonoBehaviour
       catFactText.text = "Failed to load cat fact. Try again!";
     });
   }
+}
+
+[System.Serializable]
+public class GetResponse
+{
+  public string fact;
 }

@@ -14,12 +14,12 @@ public class WebRequestManager
     this.apiUrl = apiUrl;
   }
 
-  public void FetchCatFact(MonoBehaviour runner, Action<string> onSuccess, Action<string> onError)
+  public void FetchData(MonoBehaviour runner, Action<string> onSuccess, Action<string> onError)
   {
-    runner.StartCoroutine(GetCatFact(onSuccess, onError));
+    runner.StartCoroutine(GetData(onSuccess, onError));
   }
 
-  private IEnumerator GetCatFact(Action<string> onSuccess, Action<string> onError)
+  private IEnumerator GetData(Action<string> onSuccess, Action<string> onError)
   {
     using (UnityWebRequest request = UnityWebRequest.Get(apiUrl))
     {
@@ -28,20 +28,13 @@ public class WebRequestManager
 
       if (request.result == UnityWebRequest.Result.Success)
       {
-        CatFactResponse response = JsonUtility.FromJson<CatFactResponse>(request.downloadHandler.text);
-        onSuccess?.Invoke(response.fact);
+        onSuccess?.Invoke(request.downloadHandler.text);
       }
       else
       {
-        onSuccess?.Invoke(request.error);
+        onError?.Invoke(request.error);
       }
     }
 
   }
-}
-
-[System.Serializable]
-public class CatFactResponse
-{
-  public string fact;
 }
