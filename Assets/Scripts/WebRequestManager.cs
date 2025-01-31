@@ -5,44 +5,36 @@ using UnityEngine.Networking;
 using UnityEngine.UI;
 using TMPro;
 
-public class WebRequestManager : MonoBehaviour
+public class WebRequestManager
 {
-  public TMPro.TextMeshProUGUI catFactText;
+  private string apiUrl;
 
-  private string apiUrl = "https://catfact.ninja/fact";
-
-  private void Start()
+  public WebRequestManager(string apiUrl)
   {
-    FetchCatFact();
+    this.apiUrl = apiUrl;
   }
 
-  public void FetchCatFact()
+  public void FetchData(MonoBehaviour runner, Action<string> onSuccess, Action<string> onError)
   {
-    StartCoroutine(GetCatFact());
+    runner.StartCoroutine(GetData(onSuccess, onError));
   }
 
-  private IEnumerator GetCatFact()
+  private IEnumerator GetData(Action<string> onSuccess, Action<string> onError)
   {
-    UnityWebRequest request = UnityWebRequest.Get(apiUrl);
-
-    yield return request.SendWebRequest();
-
-    if (request.result == UnityWebRequest.Result.Success)
+    using (UnityWebRequest request = UnityWebRequest.Get(apiUrl))
     {
-      CatFactResponse response = JsonUtility.FromJson<CatFactResponse>(request.downloadHandler.text);
-      catFactText.text = response.fact;
-    }
-    else
-    {
-      Debug.LogError("Error fetching cat fact: " + request.error);
-      catFactText.text = "Failed to load cat fact. Try again!";
+
+      yield return request.SendWebRequest();
+
+      if (request.result == UnityWebRequest.Result.Success)
+      {
+        onSuccess?.Invoke(request.downloadHandler.text);
+      }
+      else
+      {
+        onError?.Invoke(request.error);
+      }
     }
 
   }
-}
-
-[System.Serializable]
-public class CatFactResponse
-{
-  public string fact;
 }
