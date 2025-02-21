@@ -1,0 +1,31 @@
+<ui:UXML xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ui="UnityEngine.UIElements" xmlns:editor="UnityEditor.UIElements" noNamespaceSchemaLocation="../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
+    <Style src="project://database/Assets/UI%20Toolkit/QuizStyle.uss?fileID=7433441132597879392&amp;guid=fa2f708dfb9fb5e42b04871327ac1275&amp;type=3#QuizStyle" />
+    <ui:VisualElement name="Main" style="background-color: rgb(184, 209, 255); width: 100%; height: 100%;">
+        <ui:VisualElement name="Top" style="flex-grow: 0; flex-direction: column-reverse; padding-top: 0; padding-right: 0; padding-bottom: 0; padding-left: 0; flex-shrink: 0; margin-top: 40px; margin-right: 40px; margin-bottom: 40px; margin-left: 40px; height: 571px;">
+            <ui:VisualElement name="QuestionImage" enabled="true" style="background-image: url(&quot;project://database/Assets/TutorialInfo/Icons/Mobile%203D.png?fileID=2800000&amp;guid=cbea0258d69fdef4ba73fa582f0e2004&amp;type=3#Mobile 3D&quot;); -unity-background-scale-mode: scale-to-fit; flex-grow: 1; height: 100%; width: 100%; flex-shrink: 0;" />
+            <ui:VisualElement name="TopHeader" style="flex-direction: row; justify-content: space-between; width: 100%; align-items: flex-start;">
+                <ui:Button text="Quit" name="QuitButton" class="simple-button" />
+                <ui:Button text="Skip" name="SkipButton" class="simple-button" />
+            </ui:VisualElement>
+        </ui:VisualElement>
+        <ui:VisualElement name="Mid" style="flex-grow: 1; flex-shrink: 1; padding-top: 0; padding-right: 0; padding-bottom: 0; padding-left: 0; flex-direction: column; margin-top: 40px; margin-right: 40px; margin-bottom: 40px; margin-left: 40px;">
+            <ui:VisualElement name="Progress" style="min-height: 88px;">
+                <ui:Label text="Question 16/30" name="ProgressLabel" style="font-size: 33px; margin-top: 0; margin-right: 0; margin-bottom: 0; margin-left: 0; padding-top: 0; padding-right: 0; padding-bottom: 0; padding-left: 0; -unity-text-align: middle-center;" />
+                <ui:ProgressBar value="16" high-value="30" name="ProgressBar" style="scale: 1 2; transform-origin: top; margin-top: 0; margin-right: 0; margin-bottom: 0; margin-left: 0; padding-top: 0; padding-right: 0; padding-bottom: 0; padding-left: 0;" />
+            </ui:VisualElement>
+            <ui:VisualElement name="QuestionBox" style="flex-grow: 1; margin-top: 20px;">
+                <ui:ScrollView horizontal-scroller-visibility="Hidden">
+                    <ui:Label text="Lorem ipsum odor amet, consectetuer adipiscing elit. Quisque per ad quisque eros sed amet cras. Vel ad massa vestibulum sociosqu pretium. Ultricies nascetur amet vehicula aptent dolor eros varius natoque porta. Dis ut consectetur netus tempor sodales pharetra auctor platea euismod. Facilisis lacinia consectetur vulputate volutpat potenti praesent maecenas enim. Ligula aliquet tempus nisi dis dolor fames.&#10;Mus dui et commodo parturient maecenas sapien varius. Purus lobortis vehicula integer accumsan dictum hendrerit senectus ultrices tellus. Nunc et ultricies iaculis est volutpat in. Eros fames nisl luctus taciti pellentesque viverra. Per lectus nullam eleifend elementum semper quisque mi nunc sagittis. Placerat velit magna gravida adipiscing urna ultrices ultrices vel.&#10;&#10;Mus dui et commodo parturient maecenas sapien varius. Purus lobortis vehicula integer accumsan dictum hendrerit senectus ultrices tellus. Nunc et ultricies iaculis est volutpat in. Eros fames nisl luctus taciti pellentesque viverra. Per lectus nullam eleifend elementum semper quisque mi nunc sagittis. Placerat velit magna gravida adipiscing urna ultrices ultrices vel." name="QuestionText" selectable="false" enabled="true" style="font-size: 42px; white-space: pre-wrap;" />
+                </ui:ScrollView>
+            </ui:VisualElement>
+        </ui:VisualElement>
+        <ui:VisualElement name="Bot" style="flex-grow: 0; height: 440px; flex-shrink: 0; padding-top: 0; padding-right: 0; padding-bottom: 0; padding-left: 0; margin-top: 40px; margin-right: 40px; margin-bottom: 40px; margin-left: 40px;">
+            <ui:VisualElement name="Answers" class="answer-box">
+                <ui:Button text="Answer 1" name="Button1" double-click-selects-word="false" triple-click-selects-line="false" class="answer-button" style="background-color: rgb(226, 27, 60);" />
+                <ui:Button text="Answer 2" name="Button2" triple-click-selects-line="false" class="answer-button" style="background-color: rgb(19, 104, 206);" />
+                <ui:Button text="Answer 3" name="Button3" double-click-selects-word="false" triple-click-selects-line="false" class="answer-button" style="background-color: rgb(216, 158, 0);" />
+                <ui:Button text="Answer 4" name="Button4" double-click-selects-word="false" triple-click-selects-line="false" class="answer-button" style="background-color: rgb(38, 137, 12);" />
+            </ui:VisualElement>
+        </ui:VisualElement>
+    </ui:VisualElement>
+</ui:UXML>

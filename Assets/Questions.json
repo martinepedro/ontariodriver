@@ -1,0 +1,26 @@
+{
+  "Questions": [
+    {
+      "QuestionText": "What is the capital of France?",
+      "Options": [
+        "Berlin",
+        "Madrid",
+        "Paris",
+        "Rome"
+      ],
+      "CorrectAnswer": 2,
+      "Image": "paris"
+    },
+    {
+      "QuestionText": "Which planet is known as the Red Planet?",
+      "Options": [
+        "Jupiter",
+        "Mars",
+        "Venus",
+        "Mercury"
+      ],
+      "CorrectAnswer": 1,
+      "Image": "mars"
+    }
+  ]
+}
