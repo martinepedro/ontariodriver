@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -9,6 +10,8 @@ public class MenuUI : MonoBehaviour
 
 	private Quiz _quiz;
 	private int _currentQuestion = -1;
+	private int _numberOfQuestions = 30;
+	private int _numberOfSeconds = 30;
 	private bool awaitingAnswer = false;
 
 	// UI
@@ -16,7 +19,7 @@ public class MenuUI : MonoBehaviour
 	private Label _questionText;
 	private VisualElement _questionImage;
 	private Texture2D _image;
-	private ProgressBar _progressBar;
+	private ProgressBar _timeBar;
 	private Label _progressLabel;
 
 
@@ -39,21 +42,34 @@ public class MenuUI : MonoBehaviour
 		_questionText = root.Q<Label>("QuestionText");
 		_questionImage = root.Q<VisualElement>("QuestionImage");
 		_progressLabel = root.Q<Label>("ProgressLabel");
-		_progressBar = root.Q<ProgressBar>("ProgressBar");
-		_progressBar.highValue = 30;
+		_timeBar = root.Q<ProgressBar>("TimeBar");
+		_timeBar.highValue = _numberOfSeconds;
 
 		LoadQuiz();
 
 		StartCoroutine(ManageGame());
+		//StartCoroutine(Countdown());
+	}
+
+	private IEnumerator Countdown()
+	{
+		int time = _numberOfSeconds;
+		// Create a timer that will tick every second
+		while (time > 0)
+		{
+			_timeBar.value = time;
+			yield return new WaitForSeconds(1);
+			time--;
+		}
+		DisplayNextQuestion();
 	}
 
 	private IEnumerator ManageGame()
 	{
 		int progress = 0;
-		while (progress < 30)
+		while (progress < _numberOfQuestions)
 		{
-			_progressBar.value = progress;
-			_progressLabel.text = "Question " + (progress + 1) + "/30";
+			_progressLabel.text = "Question " + (progress + 1) + "/" + ;
 			awaitingAnswer = true;
 			DisplayNextQuestion();
 			while (awaitingAnswer) yield return null;
